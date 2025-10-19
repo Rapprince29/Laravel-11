@@ -1,14 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\Department; // ✅ gunakan model Department, bukan Departemen
 
 class EmployeeController extends Controller
 {
     public function index()
     {
-        $employees = Employee::latest()->paginate(5);
+        $employees = Employee::latest()->paginate();
         return view('employees.index', compact('employees'));
     }
 
@@ -17,7 +19,11 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('employees.create');
+        // ✅ Ambil semua data department
+        $departments = Department::all();
+
+        // ✅ Kirim ke view
+        return view('employees.create', compact('departments'));
     }
 
     /**
@@ -33,8 +39,13 @@ class EmployeeController extends Controller
             'alamat' => 'required|string|max:255',
             'tanggal_masuk' => 'required|date',
             'status' => 'required|string|max:50',
+            // ✅ ubah sesuai nama tabel "departments"
+            'department_id' => 'required|integer|exists:departments,id',
         ]);
+
+        // ✅ Simpan data pegawai
         Employee::create($request->all());
+
         return redirect()->route('employees.index');
     }
 
@@ -44,11 +55,11 @@ class EmployeeController extends Controller
         return view('employees.show', compact('employee'));
     }
 
-
     public function edit(string $id)
     {
         $employee = Employee::find($id);
-        return view('employees.edit', compact('employee'));
+        $departments = Department::all(); // ✅ tambahkan biar dropdown muncul di edit
+        return view('employees.edit', compact('employee', 'departments'));
     }
 
     /**
@@ -64,17 +75,12 @@ class EmployeeController extends Controller
             'alamat' => 'required|string|max:255',
             'tanggal_masuk' => 'required|date',
             'status' => 'required|string|max:50',
+            'department_id' => 'required|integer|exists:departments,id',
         ]);
+
         $employee = Employee::findOrFail($id);
-        $employee->update($request->only([
-            'nama_lengkap',
-            'email',
-            'nomor_telepon',
-            'tanggal_lahir',
-            'alamat',
-            'tanggal_masuk',
-            'status',
-        ]));
+        $employee->update($request->all());
+
         return redirect()->route('employees.index');
     }
 

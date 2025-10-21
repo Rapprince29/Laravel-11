@@ -5,7 +5,7 @@
 @section('content')
 <div class="container mt-5">
   <div class="card shadow-lg">
-    <div class="card-header text-white text-center fw-bold" style="background-color:#006eff;">
+    <div class="card-header text-white text-center fw-bold" style="background-color:#4B0082;">
       Form Input Pegawai
     </div>
     <div class="card-body">

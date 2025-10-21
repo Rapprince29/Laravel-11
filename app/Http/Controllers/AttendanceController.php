@@ -58,7 +58,7 @@ class AttendanceController extends Controller
     public function show($id)
     {
         $attendance = Attendance::with('employee')->findOrFail($id);
-        return view('attendances.show', compact('attendance'));
+        return view('attendance.show', compact('attendance'));
     }
 
     /**

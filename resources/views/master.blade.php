@@ -10,20 +10,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <style>
-    
     :root {
       --main-purple: #4B0082;
-      
+
       --dark-purple: #3A0155;
-      
+
       --light-purple: #9370DB;
-      
+
       --text-contrast: #E6E0F8;
-      
+
       --table-stripe: #F8F4FF;
-      
+
       --table-odd: #EFEAFF;
-      
+
     }
 
     /* 🌃 Background wallpaper */
@@ -36,14 +35,14 @@
       font-family: 'Poppins', sans-serif;
     }
 
-    
+
     .content-card {
-      
+
       background: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(10px);
-      
+
       border-radius: 18px;
-      
+
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
       padding: 2rem;
       margin-top: 1.5rem;
@@ -54,10 +53,10 @@
       padding: 2rem 0;
     }
 
-    
+
     footer {
       background-color: var(--dark-purple);
-      
+
       color: white;
       text-align: center;
       padding: 14px 0;
@@ -65,7 +64,7 @@
       font-weight: 500;
     }
 
-    
+
     .navbar {
       background-color: var(--main-purple) !important;
       backdrop-filter: blur(6px);
@@ -83,10 +82,10 @@
 
     .navbar-nav .nav-link:hover {
       color: #DDA0DD !important;
-      
+
     }
 
-    
+
     table.table {
       border-radius: 14px;
       overflow: hidden;
@@ -95,39 +94,39 @@
 
     thead {
       background-color: var(--main-purple);
-            color: white;
+      color: white;
     }
 
     tbody tr:nth-child(even) {
       background-color: var(--table-stripe);
-      
+
     }
 
     tbody tr:nth-child(odd) {
       background-color: var(--table-odd);
-      
+
     }
 
-    
+
     tbody tr:hover {
       background-color: initial;
-      
+
       transition: none;
     }
 
-    
+
     .table-hover>tbody>tr:hover>* {
       --bs-table-accent-bg: initial !important;
     }
 
 
-    
+
     .text-success {
       color: var(--main-purple) !important;
-      
+
     }
 
-    
+
     .btn-primary {
       background-color: var(--light-purple);
       border: none;
@@ -137,21 +136,21 @@
       background-color: var(--main-purple);
     }
 
-    
+
     .btn-success,
     .badge.bg-success {
       background-color: var(--light-purple) !important;
       color: white !important;
-      
+
       border: none;
     }
 
     .btn-success:hover {
       background-color: #8A2BE2 !important;
-      
+
     }
 
-    
+
     .btn-info {
       background-color: var(--main-purple) !important;
       border: none;
@@ -163,9 +162,9 @@
 
     .btn-warning {
       background-color: #FFD700;
-      
+
       color: var(--main-purple);
-      
+
       border: none;
     }
 
@@ -175,24 +174,24 @@
 
     .btn-danger {
       background-color: #DC143C;
-      
+
       border: none;
     }
 
     .btn-danger:hover {
       background-color: #B22222;
-    
+
     }
 
-   
+
     .alert-success {
       background-color: #E6E6FA;
-      
+
       border: none;
       color: var(--dark-purple);
     }
 
-  
+
     .pagination .page-link {
       color: var(--main-purple);
     }
@@ -223,6 +222,7 @@
           <li class="nav-item"><a class="nav-link {{ request()->routeIs('positions.*') ? 'active' : '' }}" href="{{ route('positions.index') }}"><i class="fa-solid fa-briefcase"></i> Jabatan</a></li>
           <li class="nav-item"><a class="nav-link {{ request()->routeIs('attendances.*') ? 'active' : '' }}" href="{{ route('attendances.index') }}"><i class="fa-solid fa-calendar-check"></i> Absensi</a></li>
           <li class="nav-item"><a class="nav-link {{ request()->routeIs('salaries.*') ? 'active' : '' }}" href="{{ route('salaries.index') }}"><i class="fa-solid fa-wallet"></i> Gaji</a></li>
+          <li class="nav-item"><a class="nav-link {{ request()->routeIs('leaves.*') ? 'active' : '' }}" href="{{ route('leaves.index') }}"><i class="fa-solid fa-plane-departure"></i> Manajemen Cuti</a></li>
         </ul>
       </div>
     </div>

@@ -10,7 +10,7 @@ class EmployeeController extends Controller
 {
     public function index()
     {
-        $employees = Employee::with('department')->latest()->paginate(10);
+        $employees = Employee::with(['department', 'user'])->latest()->paginate(10);
         return view('employees.index', compact('employees'));
     }
 
